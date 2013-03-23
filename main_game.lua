@@ -25,14 +25,28 @@ end
 
 function MainGame:touched(x, y)
      local myCircle = display.newCircle( x, y, 10 )
-     myCircle:setFillColor(255,68,228)
-     table.insert(self.player1, myCircle)
+     
+     if y > 300 then
+	myCircle:setFillColor(255,68,228)
+	table.insert(self.player1, myCircle)
+     end
+
+     if y < 100 then
+	myCircle:setFillColor(0,68,228)
+	table.insert(self.player2, myCircle)
+     end
+
 end
 
 function MainGame:moveSteps()
    for i, step in ipairs(self.player1) do
       step.y = step.y - 4
    end
+
+   for i, step in ipairs(self.player2) do
+      step.y = step.y + 4
+   end
+
 end
 
 
