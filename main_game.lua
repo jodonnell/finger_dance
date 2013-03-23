@@ -4,6 +4,8 @@ MainGame = class()
 
 function MainGame:init()
    self.frames = 0
+   self.player1 = {}
+   self.player2 = {}
    self.gameOver = false
 end
 
@@ -13,15 +15,24 @@ function MainGame:mainGameLoop()
    self.frames = self.frames + 1
 end
 
-local function onScreenTouch( event )
-  if event.phase == "began" then
-     local myCircle = display.newCircle( 100, 100, 30 )
-     myCircle:setFillColor(128,128,128)
-  elseif event.phase == "moved" then
-  elseif event.phase == "ended" or event.phase == "cancelled" then
-  end
+function MainGame:mainGameLoop()
+   if self.gameOver then return end
 
-  return true
+   self:moveSteps()
+
+   self.frames = self.frames + 1
 end
 
-Runtime:addEventListener( "touch", onScreenTouch )
+function MainGame:touched(x, y)
+     local myCircle = display.newCircle( x, y, 10 )
+     myCircle:setFillColor(255,68,228)
+     table.insert(self.player1, myCircle)
+end
+
+function MainGame:moveSteps()
+   for i, step in ipairs(self.player1) do
+      step.y = step.y - 4
+   end
+end
+
+

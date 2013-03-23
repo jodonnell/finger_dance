@@ -11,8 +11,8 @@ function teardown()
 end
 
 function test_can_move_right()
-   local x = main_game.frames
+   main_game:touched(100, 100)
    main_game:mainGameLoop()
-   assert_gt(x, main_game.frames)
+   assert(96, main_game.player1[1].y)
 end
 

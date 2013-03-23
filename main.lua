@@ -17,6 +17,19 @@ function loop()
    main_game:mainGameLoop()
 end
 
+local function onScreenTouch( event )
+  if event.phase == "began" then
+     main_game:touched(event.x, event.y)
+  elseif event.phase == "moved" then
+  elseif event.phase == "ended" or event.phase == "cancelled" then
+  end
+
+  return true
+end
+
+Runtime:addEventListener( "touch", onScreenTouch )
+
+
 Runtime:addEventListener( "enterFrame", loop )
 
 -- local fps = require("fps")
