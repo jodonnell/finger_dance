@@ -1,4 +1,5 @@
 require 'class'
+system.activate("multitouch")
 
 MainGame = class()
 
@@ -24,18 +25,19 @@ function MainGame:mainGameLoop()
 end
 
 function MainGame:touched(x, y)
-     local myCircle = display.newCircle( x, y, 10 )
+   if y > 400 or y < 80 then
+      local myCircle = display.newCircle( x, y, 10 )
+   end
      
-     if y > 300 then
-	myCircle:setFillColor(255,68,228)
-	table.insert(self.player1, myCircle)
-     end
+   if y > 400 then
+      myCircle:setFillColor(255,68,228)
+      table.insert(self.player1, myCircle)
+   end
 
-     if y < 100 then
-	myCircle:setFillColor(0,68,228)
-	table.insert(self.player2, myCircle)
-     end
-
+   if y < 80 then
+      myCircle:setFillColor(0,68,228)
+      table.insert(self.player2, myCircle)
+   end
 end
 
 function MainGame:moveSteps()
