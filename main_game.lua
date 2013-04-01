@@ -18,9 +18,13 @@ function MainGame:init()
 
 end
 
+function MainGame:oneNoteWidth()
+   return display.contentWidth / 12
+end
+
 function MainGame:printNotes()
    local w = display.contentWidth
-   local sixths = w / 12
+   local sixths = self:oneNoteWidth()
    
    for i=0,12 do
       local rect = display.newRoundedRect(sixths * i, 400, sixths - 10, 60, 3)
@@ -129,30 +133,27 @@ function MainGame:playNote(noteIndex)
    end
 end
 
+function MainGame:noteIndex(x)
+   return math.ceil(x / self:oneNoteWidth())
+end
+
 function MainGame:touched(x, y)
    if y > 400 and self.player == 1 then
       local myCircle = display.newCircle( x, y, 10 )
       myCircle:setFillColor(255,68,228)
       table.insert(self.player1Bullets, myCircle)
 
-      local w = display.contentWidth
-      local sixths = w / 12
-      noteIndex = math.ceil(x / sixths)
-      self:playNote(noteIndex)
+      self:playNote(self:noteIndex(x))
    end
 
    local stepToRemove = 0
    if y > 40 and y < 120 and self.player == 1 then
       if #self.player1Bullets > 0 then
 	 for i,step in ipairs(self.player1Bullets) do
-	    -- display.newRect(step.x - 25, 60, 50, 50)
 	    if x > step.x - 25 and x < step.x + 25 and step.y > 40 and step.y < 110 then
 	       	 stepToRemove = i
 
-		 local w = display.contentWidth
-		 local sixths = w / 6
-		 noteIndex = math.floor(x / sixths)
-		 self:playNote(noteIndex)
+		 self:playNote(self:noteIndex(x))
 		 ShootFirework(step.x, step.y)
 	    end
 	 end
@@ -190,11 +191,6 @@ function MainGame:moveSteps()
    end
 
 end
-
-
-
-
-
 
 
 local lib_emitter = require("lib_emitter")
