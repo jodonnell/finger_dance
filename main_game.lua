@@ -25,42 +25,45 @@ end
 
 function MainGame:printNotes()
    local w = display.contentWidth
-   local sixths = self:oneNoteWidth()
+   local noteWidth = self:oneNoteWidth()
    
    for i=0,12 do
-      local rect = display.newRoundedRect(sixths * i, 400, sixths - 10, 60, 3)
+      local rect = display.newRoundedRect(noteWidth * i, 400, noteWidth - 10, 60, 3)
       rect:setFillColor(i * 40, 140, 140)
-
-      local letter = nil
-      if i == 0 then
-	 letter = "C2"
-      elseif i == 1 then
-	 letter = "C#2"
-      elseif i == 2 then
-	 letter = "D2"
-      elseif i == 3 then
-	 letter = "D#2"
-      elseif i == 4 then
-	 letter = "E2"
-      elseif i == 5 then
-	 letter = "F2"
-      elseif i == 6 then
-	 letter = "F#2"
-      elseif i == 7 then
-	 letter = "G2"
-      elseif i == 8 then
-	 letter = "G#2"
-      elseif i == 9 then
-	 letter = "A2"
-      elseif i == 10 then
-	 letter = "A#2"
-      elseif i == 11 then
-	 letter = "B2"
-      elseif i == 12 then
-	 letter = "C3"
-      end
-      display.newText(letter, sixths * i + 5, 420, native.systemFont, 6)
+      display.newText(self:getLetterFromIndex(i), noteWidth * i + 5, 420, native.systemFont, 6)
    end
+end
+
+function MainGame:getLetterFromIndex(i)
+   local letter = nil
+   if i == 0 then
+      letter = "C2"
+   elseif i == 1 then
+      letter = "C#2"
+   elseif i == 2 then
+      letter = "D2"
+   elseif i == 3 then
+      letter = "D#2"
+   elseif i == 4 then
+      letter = "E2"
+   elseif i == 5 then
+      letter = "F2"
+   elseif i == 6 then
+      letter = "F#2"
+   elseif i == 7 then
+      letter = "G2"
+   elseif i == 8 then
+      letter = "G#2"
+   elseif i == 9 then
+      letter = "A2"
+   elseif i == 10 then
+      letter = "A#2"
+   elseif i == 11 then
+      letter = "B2"
+   elseif i == 12 then
+      letter = "C3"
+   end
+   return letter
 end
 
 function MainGame:loadSound()
@@ -191,5 +194,4 @@ function MainGame:moveSteps()
    for i, step in ipairs(self.player2) do
       step.y = step.y + 4
    end
-
 end
