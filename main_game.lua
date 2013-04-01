@@ -115,7 +115,6 @@ function MainGame:increaseScore()
 end
 
 function MainGame:playNote(noteIndex)
-   print(noteIndex)
    if noteIndex == 1 then
       audio.play(self.c2)
    elseif noteIndex == 2 then
