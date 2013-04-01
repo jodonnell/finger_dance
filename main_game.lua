@@ -85,6 +85,13 @@ end
 function MainGame:mainGameLoop()
    if self.gameOver then return end
 
+   self:removeMissedSteps()
+   self:moveSteps()
+
+   self.frames = self.frames + 1
+end
+
+function MainGame:removeMissedSteps()
    local stepToRemove = 0
    if #self.player1Bullets > 0 then
       for i,step in ipairs(self.player1Bullets) do
@@ -97,14 +104,14 @@ function MainGame:mainGameLoop()
    if stepToRemove ~= 0 then
       self.player1Bullets[stepToRemove]:removeSelf()
       table.remove(self.player1Bullets, stepToRemove)
-      self.score = self.score + 1
-      self.scoreDisplay:removeSelf()
-      self.scoreDisplay = display.newText(self.score, 0, 0, native.systemFont, 16)
+      self:increaseScore()
    end
+end
 
-   self:moveSteps()
-
-   self.frames = self.frames + 1
+function MainGame:increaseScore()
+   self.score = self.score + 1
+   self.scoreDisplay:removeSelf()
+   self.scoreDisplay = display.newText(self.score, 0, 0, native.systemFont, 16)
 end
 
 function MainGame:playNote(noteIndex)
