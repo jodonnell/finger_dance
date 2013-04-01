@@ -1,0 +1,10 @@
+* Game
+** make notes louder
+** particle effects when clicking notes
+** more melodic notes
+
+
+mp3splt Piano.pp.F3.mp3 00.00.40 00.02
+mp3gain -r -d integer reallyquietsong.mp3
+
+
