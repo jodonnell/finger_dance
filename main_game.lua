@@ -145,32 +145,40 @@ function MainGame:noteIndex(x)
    return math.ceil(x / self:oneNoteWidth())
 end
 
-function MainGame:touched(x, y)
-   if y > 400 then
-      local myCircle = display.newCircle( x, y, 10 )
-      myCircle:setFillColor(255,68,228)
-      table.insert(self.notes, myCircle)
+function MainGame:createNote(x, y)
+   local myCircle = display.newCircle( x, y, 10 )
+   myCircle:setFillColor(255,68,228)
+   table.insert(self.notes, myCircle)
 
-      self:playNote(self:noteIndex(x))
-   end
+   self:playNote(self:noteIndex(x))
+end
 
+function MainGame:destroyNote(x, y)
    local noteToRemove = 0
-   if y > 40 and y < 120 then
-      if #self.notes > 0 then
-	 for i,note in ipairs(self.notes) do
-	    if x > note.x - 25 and x < note.x + 25 and note.y > 40 and note.y < 110 then
-	       	 noteToRemove = i
+   if #self.notes > 0 then
+      for i,note in ipairs(self.notes) do
+	 if x > note.x - 25 and x < note.x + 25 and note.y > 40 and note.y < 110 then
+	    noteToRemove = i
 
-		 self:playNote(self:noteIndex(x))
-		 ShootFirework(note.x, note.y)
-	    end
+	    self:playNote(self:noteIndex(x))
+	    ShootFirework(note.x, note.y)
 	 end
       end
+   end
 
-      if noteToRemove ~= 0 then
-	 self.notes[noteToRemove]:removeSelf()
-	 table.remove(self.notes, noteToRemove)
-      end
+   if noteToRemove ~= 0 then
+      self.notes[noteToRemove]:removeSelf()
+      table.remove(self.notes, noteToRemove)
+   end
+end
+
+function MainGame:touched(x, y)
+   if y > 400 then
+      self:createNote(x, y)
+   end
+
+   if y > 40 and y < 120 then
+      self:destroyNote(x, y)
    end
 end
 
