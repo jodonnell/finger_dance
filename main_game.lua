@@ -20,7 +20,7 @@ function MainGame:init()
 end
 
 function MainGame:oneNoteWidth()
-   return display.contentWidth / 12
+   return display.contentWidth / 13
 end
 
 function MainGame:printNotes()
@@ -105,31 +105,32 @@ function MainGame:mainGameLoop()
 end
 
 function MainGame:playNote(noteIndex)
-   if noteIndex == 0 then
+   print(noteIndex)
+   if noteIndex == 1 then
       audio.play(self.c2)
-   elseif noteIndex == 1 then
-      audio.play(self.cs2)
    elseif noteIndex == 2 then
-      audio.play(self.d2)
+      audio.play(self.cs2)
    elseif noteIndex == 3 then
-      audio.play(self.ds2)
+      audio.play(self.d2)
    elseif noteIndex == 4 then
-      audio.play(self.e2)
+      audio.play(self.ds2)
    elseif noteIndex == 5 then
-      audio.play(self.f2)
+      audio.play(self.e2)
    elseif noteIndex == 6 then
-      audio.play(self.fs2)
+      audio.play(self.f2)
    elseif noteIndex == 7 then
-      audio.play(self.g2)
+      audio.play(self.fs2)
    elseif noteIndex == 8 then
-      audio.play(self.gs2)
+      audio.play(self.g2)
    elseif noteIndex == 9 then
-      audio.play(self.a2)
+      audio.play(self.gs2)
    elseif noteIndex == 10 then
-      audio.play(self.as2)
+      audio.play(self.a2)
    elseif noteIndex == 11 then
-      audio.play(self.b2)
+      audio.play(self.as2)
    elseif noteIndex == 12 then
+      audio.play(self.b2)
+   elseif noteIndex == 13 then
       audio.play(self.c3)
    end
 end
