@@ -7,16 +7,13 @@ MainGame = class()
 function MainGame:init()
    self.frames = 0
    self.player1Bullets = {}
-   self.player2 = {}
    self.gameOver = false
    display.newLine(0, 80, 360, 80 )
-   self.player = 1
    self.score = 0
    self.scoreDisplay = display.newText(self.score, 0, 0, native.systemFont, 16)
 
    self:loadSound()
    self:printNotes()
-
 end
 
 function MainGame:oneNoteWidth()
@@ -149,7 +146,7 @@ function MainGame:noteIndex(x)
 end
 
 function MainGame:touched(x, y)
-   if y > 400 and self.player == 1 then
+   if y > 400 then
       local myCircle = display.newCircle( x, y, 10 )
       myCircle:setFillColor(255,68,228)
       table.insert(self.player1Bullets, myCircle)
@@ -158,7 +155,7 @@ function MainGame:touched(x, y)
    end
 
    local stepToRemove = 0
-   if y > 40 and y < 120 and self.player == 1 then
+   if y > 40 and y < 120 then
       if #self.player1Bullets > 0 then
 	 for i,step in ipairs(self.player1Bullets) do
 	    if x > step.x - 25 and x < step.x + 25 and step.y > 40 and step.y < 110 then
@@ -174,14 +171,6 @@ function MainGame:touched(x, y)
 	 self.player1Bullets[stepToRemove]:removeSelf()
 	 table.remove(self.player1Bullets, stepToRemove)
       end
-
-      -- check with collision of player 1 bullets
-      -- make em disappear
-   end
-
-   if y < 80 and self.player == 2 then
-      myCircle:setFillColor(0,68,228)
-      table.insert(self.player2, myCircle)
    end
 end
 
@@ -195,9 +184,5 @@ function MainGame:moveSteps()
       if step.y < 40 then
 	 step:setFillColor(255,68,228)
       end
-   end
-
-   for i, step in ipairs(self.player2) do
-      step.y = step.y + 4
    end
 end
