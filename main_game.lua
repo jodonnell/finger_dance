@@ -6,7 +6,7 @@ MainGame = class()
 
 function MainGame:init()
    self.frames = 0
-   self.player1Bullets = {}
+   self.notes = {}
    self.gameOver = false
    display.newLine(0, 80, 360, 80 )
    self.score = 0
@@ -82,25 +82,25 @@ end
 function MainGame:mainGameLoop()
    if self.gameOver then return end
 
-   self:removeMissedSteps()
-   self:moveSteps()
+   self:removeMissedNotes()
+   self:moveNotes()
 
    self.frames = self.frames + 1
 end
 
-function MainGame:removeMissedSteps()
-   local stepToRemove = 0
-   if #self.player1Bullets > 0 then
-      for i,step in ipairs(self.player1Bullets) do
-	 if step.y < -10 then
-	    stepToRemove = i
+function MainGame:removeMissedNotes()
+   local noteToRemove = 0
+   if #self.notes > 0 then
+      for i,note in ipairs(self.notes) do
+	 if note.y < -10 then
+	    noteToRemove = i
 	 end
       end
    end
 
-   if stepToRemove ~= 0 then
-      self.player1Bullets[stepToRemove]:removeSelf()
-      table.remove(self.player1Bullets, stepToRemove)
+   if noteToRemove ~= 0 then
+      self.notes[noteToRemove]:removeSelf()
+      table.remove(self.notes, noteToRemove)
       self:increaseScore()
    end
 end
@@ -149,40 +149,40 @@ function MainGame:touched(x, y)
    if y > 400 then
       local myCircle = display.newCircle( x, y, 10 )
       myCircle:setFillColor(255,68,228)
-      table.insert(self.player1Bullets, myCircle)
+      table.insert(self.notes, myCircle)
 
       self:playNote(self:noteIndex(x))
    end
 
-   local stepToRemove = 0
+   local noteToRemove = 0
    if y > 40 and y < 120 then
-      if #self.player1Bullets > 0 then
-	 for i,step in ipairs(self.player1Bullets) do
-	    if x > step.x - 25 and x < step.x + 25 and step.y > 40 and step.y < 110 then
-	       	 stepToRemove = i
+      if #self.notes > 0 then
+	 for i,note in ipairs(self.notes) do
+	    if x > note.x - 25 and x < note.x + 25 and note.y > 40 and note.y < 110 then
+	       	 noteToRemove = i
 
 		 self:playNote(self:noteIndex(x))
-		 ShootFirework(step.x, step.y)
+		 ShootFirework(note.x, note.y)
 	    end
 	 end
       end
 
-      if stepToRemove ~= 0 then
-	 self.player1Bullets[stepToRemove]:removeSelf()
-	 table.remove(self.player1Bullets, stepToRemove)
+      if noteToRemove ~= 0 then
+	 self.notes[noteToRemove]:removeSelf()
+	 table.remove(self.notes, noteToRemove)
       end
    end
 end
 
-function MainGame:moveSteps()
-   for i, step in ipairs(self.player1Bullets) do
-      step.y = step.y - 4
-      if step.y < 120 then
-	 step:setFillColor(0,255,0)
+function MainGame:moveNotes()
+   for i, note in ipairs(self.notes) do
+      note.y = note.y - 4
+      if note.y < 120 then
+	 note:setFillColor(0,255,0)
       end
 
-      if step.y < 40 then
-	 step:setFillColor(255,68,228)
+      if note.y < 40 then
+	 note:setFillColor(255,68,228)
       end
    end
 end
