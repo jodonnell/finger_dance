@@ -1,6 +1,10 @@
 * FingerDance
 ** Have circle hovering at approx C3
 ** Once touched shoot circle to other player in 2 ticks.
+*** Shoot to bottom of other player's touch area
+*** At where it would be in keyboard F1 - A4
+** If they touch in touch zone play sound when hits end of touch zone
+** Send back
 
 
 
