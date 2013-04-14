@@ -17,19 +17,23 @@ function MainGame:init()
    self:printNotes()
 
    notes = Notes()
-   self:measure1(1)
-   self:measure2(9)
-   self:measure3(18)
-   self:measure4(25)
-   self:measure5(33)
-   self:measure6(42)
-   self:measure7(49)
-   self:measure8(57)
-   self:measure9(66)
-   self:measure10(73)
-   self:measure11(81)
+   self:playSong(1)
+end
 
+function MainGame:playSong(startTime)
+   self:measure1(startTime)
+   self:measure2(startTime + 8)
+   self:measure3(startTime + 17)
+   self:measure4(startTime + 24)
+   self:measure5(startTime + 32)
+   self:measure6(startTime + 41)
+   self:measure7(startTime + 48)
+   self:measure8(startTime + 56)
+   self:measure9(startTime + 65)
+   self:measure10(startTime + 72)
+   self:measure11(startTime + 80)
    -- to measure 16
+
 end
 
 function MainGame:measure1(startTime)
