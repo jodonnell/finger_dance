@@ -5,7 +5,12 @@ Note = class()
 function Note:init(note, length, time)
    self.note = note
    self.length = length
-   self.time = time
+   self.time = time * 1000 / 4
+
+   local function playNote(event)
+      self:play()
+   end
+   timer.performWithDelay(self.time, playNote)
 end
 
 function Note:__tostring()

@@ -1,5 +1,6 @@
 require 'class'
 require 'explosion'
+require 'notes'
 system.activate("multitouch")
 
 MainGame = class()
@@ -14,6 +15,33 @@ function MainGame:init()
 
    self:loadSound()
    self:printNotes()
+
+   notes = Notes()
+   notes:createNote("C3", 1, 0)
+   note = notes:createNote("C2", 1, 2)
+   note = notes:createNote("F3", 1, 3)
+   note = notes:createNote("A3", 1, 4)
+   note = notes:createNote("C4", 1, 5)
+
+   note = notes:createNote("D2", 1, 7)
+   note = notes:createNote("D3", 1, 9)
+   note = notes:createNote("F3", 1, 11)
+   note = notes:createNote("A3", 1, 12)
+
+   note = notes:createNote("G2", 1, 14)
+   note = notes:createNote("G3", 1, 16)
+   note = notes:createNote("A#3", 1, 18)
+   note = notes:createNote("D4", 1, 19)
+
+   note = notes:createNote("C4", 1, 20)
+   note = notes:createNote("C2", 1, 20)
+
+   note = notes:createNote("C2", 1, 21)
+   note = notes:createNote("D2", 1, 22)
+   note = notes:createNote("E2", 1, 23)
+   note = notes:createNote("F2", 1, 24)
+
+   note = notes:createNote("F2", 1, 24)
 end
 
 function MainGame:oneNoteWidth()
