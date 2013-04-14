@@ -17,31 +17,157 @@ function MainGame:init()
    self:printNotes()
 
    notes = Notes()
-   notes:createNote("C3", 1, 0)
-   note = notes:createNote("C2", 1, 2)
-   note = notes:createNote("F3", 1, 3)
-   note = notes:createNote("A3", 1, 4)
-   note = notes:createNote("C4", 1, 5)
+   self:measure1(1)
+   self:measure2(9)
+   self:measure3(18)
+   self:measure4(25)
+   self:measure5(33)
+   self:measure6(42)
+   self:measure7(49)
+   self:measure8(57)
+   self:measure9(66)
+   --self:measure10(73)
 
-   note = notes:createNote("D2", 1, 7)
-   note = notes:createNote("D3", 1, 9)
-   note = notes:createNote("F3", 1, 11)
-   note = notes:createNote("A3", 1, 12)
+   -- measure 11
+   -- notes:createNote("A1", 1, 81)
+   
+end
 
-   note = notes:createNote("G2", 1, 14)
-   note = notes:createNote("G3", 1, 16)
-   note = notes:createNote("A#3", 1, 18)
-   note = notes:createNote("D4", 1, 19)
+function MainGame:measure1(startTime)
+   notes:createNote("C3", 1, startTime)
+   notes:createNote("C3", 1, startTime + 2)
 
-   note = notes:createNote("C4", 1, 20)
-   note = notes:createNote("C2", 1, 20)
+   notes:createNote("E3", 1, startTime + 3)
+   notes:createNote("E3", 1, startTime + 5)
 
-   note = notes:createNote("C2", 1, 21)
-   note = notes:createNote("D2", 1, 22)
-   note = notes:createNote("E2", 1, 23)
-   note = notes:createNote("F2", 1, 24)
+   notes:createNote("A2", 1, startTime + 6)
+end
 
-   note = notes:createNote("F2", 1, 24)
+function MainGame:measure2(startTime)
+   notes:createNote("A2", 1, startTime)
+
+   notes:createNote("C3", 1, startTime + 1)
+   notes:createNote("C3", 1, startTime + 3)
+
+   notes:createNote("D3", 1, startTime + 4)
+   notes:createNote("D3", 1, startTime + 6)
+
+   notes:createNote("F3", 1, startTime + 7)
+end
+
+function MainGame:measure3(startTime)
+   notes:createNote("F3", 1, startTime)
+
+   notes:createNote("G2", 1, startTime + 1)
+   notes:createNote("G2", 1, startTime + 3)
+
+   notes:createNote("B2", 1, startTime + 4)
+   notes:createNote("B2", 1, startTime + 6)
+end
+
+function MainGame:measure4(startTime)
+   notes:createNote("C3", 1, startTime)
+   notes:createNote("C3", 1, startTime + 2)
+
+   notes:createNote("E3", 1, startTime + 3)
+   notes:createNote("E3", 1, startTime + 5)
+
+   notes:createNote("A2", 1, startTime + 6)
+end
+
+function MainGame:measure5(startTime)
+   notes:createNote("A2", 1, startTime)
+
+   notes:createNote("C3", 1, startTime + 1)
+   notes:createNote("C3", 1, startTime + 3)
+
+   notes:createNote("F2", 1, startTime + 4)
+   notes:createNote("F2", 1, startTime + 6)
+
+   notes:createNote("A2", 1, startTime + 7)
+end
+
+function MainGame:measure6(startTime)
+   notes:createNote("A2", 1, startTime)
+
+   notes:createNote("G2", 1, startTime + 1)
+   notes:createNote("G2", 1, startTime + 3)
+
+   notes:createNote("B2", 1, startTime + 4)
+   notes:createNote("B2", 1, startTime + 6)
+end
+
+function MainGame:measure7(startTime)
+   notes:createNote("C2", 1, 49)
+   notes:createNote("C4", 2, 49)
+
+   notes:createNote("C2", 1, 51)
+
+   notes:createNote("C3", 1, 52)
+   notes:createNote("E3", 1, 52)
+   notes:createNote("C4", 2, 52)
+
+   notes:createNote("C3", 1, 54)
+   notes:createNote("E3", 1, 54)
+
+   notes:createNote("A1", 1, 55)
+   notes:createNote("C4", 1, 55)
+end
+
+function MainGame:measure8(startTime)
+   notes:createNote("A1", 1, 57)
+
+   notes:createNote("A2", 1, startTime + 1)
+   notes:createNote("C3", 1, startTime + 1)
+
+   notes:createNote("A2", 1, startTime + 3)
+   notes:createNote("C3", 1, startTime + 3)
+
+   notes:createNote("D2", 1, startTime + 4)
+
+   notes:createNote("D2", 1, startTime + 6)
+   notes:createNote("C4", 1, startTime + 6)
+
+   notes:createNote("D3", 1, startTime + 7)
+   notes:createNote("F3", 1, startTime + 7)
+   notes:createNote("B3", 1, startTime + 7)
+end
+
+function MainGame:measure9(startTime)
+   notes:createNote("D3", 1, startTime)
+   notes:createNote("F3", 1, startTime)
+   notes:createNote("A3", 1, startTime)
+
+   notes:createNote("G1", 1, startTime + 1)
+   notes:createNote("B3", 2, startTime + 1)
+
+   notes:createNote("G1", 1, startTime + 3)
+   notes:createNote("C4", 1, startTime + 3)
+
+   notes:createNote("G2", 1, startTime + 4)
+   notes:createNote("B2", 1, startTime + 4)
+   notes:createNote("D4", 1, startTime + 4)
+
+   notes:createNote("G2", 1, startTime + 6)
+   notes:createNote("B2", 1, startTime + 6)
+end
+
+function MainGame:measure10(startTime)
+   notes:createNote("C2", 1, startTime)
+   notes:createNote("E4", 2, startTime)
+
+   notes:createNote("C2", 1, startTime + 2)
+
+   notes:createNote("C3", 1, startTime + 3)
+   notes:createNote("E3", 1, startTime + 3)
+   notes:createNote("E4", 2, startTime + 3)
+
+   notes:createNote("C3", 1, startTime + 5)
+   notes:createNote("E3", 1, startTime + 5)
+
+   notes:createNote("A1", 1, startTime + 7)
+   notes:createNote("E4", 2, startTime + 7)
+
 end
 
 function MainGame:oneNoteWidth()

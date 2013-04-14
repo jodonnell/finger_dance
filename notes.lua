@@ -55,6 +55,56 @@ function Notes:init()
    self.a4 = self:loadSound("A4")
    self.as4 = self:loadSound("A#4")
    self.b4 = self:loadSound("B4")
+
+   self.notesToSounds = {}
+   self.notesToSounds["C1"] = self.c1
+   self.notesToSounds["C#1"] = self.cs1
+   self.notesToSounds["D1"] = self.d1
+   self.notesToSounds["D#1"] = self.ds1
+   self.notesToSounds["E1"] = self.e1
+   self.notesToSounds["F1"] = self.f1
+   self.notesToSounds["F#1"] = self.fs1
+   self.notesToSounds["G1"] = self.g1
+   self.notesToSounds["G#1"] = self.gs1
+   self.notesToSounds["A1"] = self.a1
+   self.notesToSounds["A#1"] = self.as1
+   self.notesToSounds["B1"] = self.b1
+   self.notesToSounds["C2"] = self.c2
+   self.notesToSounds["C#2"] = self.cs2
+   self.notesToSounds["D2"] = self.d2
+   self.notesToSounds["D#2"] = self.ds2
+   self.notesToSounds["E2"] = self.e2
+   self.notesToSounds["F2"] = self.f2
+   self.notesToSounds["F#2"] = self.fs2
+   self.notesToSounds["G2"] = self.g2
+   self.notesToSounds["G#2"] = self.gs2
+   self.notesToSounds["A2"] = self.a2
+   self.notesToSounds["A#2"] = self.as2
+   self.notesToSounds["B2"] = self.b2
+   self.notesToSounds["C3"] = self.c3
+   self.notesToSounds["C#3"] = self.cs3
+   self.notesToSounds["D3"] = self.d3
+   self.notesToSounds["D#3"] = self.ds3
+   self.notesToSounds["E3"] = self.e3
+   self.notesToSounds["F3"] = self.f3
+   self.notesToSounds["F#3"] = self.fs3
+   self.notesToSounds["G3"] = self.g3
+   self.notesToSounds["G#3"] = self.gs3
+   self.notesToSounds["A3"] = self.a3
+   self.notesToSounds["A#3"] = self.as3
+   self.notesToSounds["B3"] = self.b3
+   self.notesToSounds["C4"] = self.c4
+   self.notesToSounds["C#4"] = self.cs4
+   self.notesToSounds["D4"] = self.d4
+   self.notesToSounds["D#4"] = self.ds4
+   self.notesToSounds["E4"] = self.e4
+   self.notesToSounds["F4"] = self.f4
+   self.notesToSounds["F#4"] = self.fs4
+   self.notesToSounds["G4"] = self.g4
+   self.notesToSounds["G#4"] = self.gs4
+   self.notesToSounds["A4"] = self.a4
+   self.notesToSounds["A#4"] = self.as4
+   self.notesToSounds["B4"] = self.b4
 end
 
 function Notes:loadSound(note)
@@ -62,31 +112,5 @@ function Notes:loadSound(note)
 end
 
 function Notes:createNote(note, length, time)
-   local loadedNote
-   if note == 'C2' then
-      loadedNote = self.c2
-   elseif note == 'F2' then
-      loadedNote = self.f2
-   elseif note == 'F3' then
-      loadedNote = self.f3
-   elseif note == 'A3' then
-      loadedNote = self.a3
-   elseif note == 'C4' then
-      loadedNote = self.c4
-   elseif note == 'D2' then
-      loadedNote = self.d2
-   elseif note == 'D3' then
-      loadedNote = self.d3
-   elseif note == 'C3' then
-      loadedNote = self.c3
-   elseif note == 'G3' then
-      loadedNote = self.g3
-   elseif note == 'G2' then
-      loadedNote = self.g2
-   elseif note == 'A#3' then
-      loadedNote = self.as3
-   elseif note == 'D4' then
-      loadedNote = self.d4
-   end
-   return Note(loadedNote, length, time)
+   return Note(self.notesToSounds[note], length, time)
 end

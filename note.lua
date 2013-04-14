@@ -4,8 +4,8 @@ Note = class()
 
 function Note:init(note, length, time)
    self.note = note
-   self.length = length
-   self.time = time * 1000 / 4
+   self.length = length * 400
+   self.time = time * 1000 / 6
 
    local function playNote(event)
       self:play()
@@ -18,5 +18,6 @@ function Note:__tostring()
 end
 
 function Note:play()
-   audio.play(self.note)
+   local channel = audio.play(self.note)
+   audio.stopWithDelay( self.length, { channel = channel }  )
 end
