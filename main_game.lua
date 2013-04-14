@@ -26,11 +26,10 @@ function MainGame:init()
    self:measure7(49)
    self:measure8(57)
    self:measure9(66)
-   --self:measure10(73)
+   self:measure10(73)
+   self:measure11(81)
 
-   -- measure 11
-   -- notes:createNote("A1", 1, 81)
-   
+   -- to measure 16
 end
 
 function MainGame:measure1(startTime)
@@ -165,8 +164,27 @@ function MainGame:measure10(startTime)
    notes:createNote("C3", 1, startTime + 5)
    notes:createNote("E3", 1, startTime + 5)
 
-   notes:createNote("A1", 1, startTime + 7)
-   notes:createNote("E4", 2, startTime + 7)
+   notes:createNote("A1", 1, startTime + 6)
+   notes:createNote("E4", 2, startTime + 6)
+end
+
+function MainGame:measure11(startTime)
+   notes:createNote("A1", 1, startTime)
+
+   notes:createNote("A2", 1, startTime + 1)
+   notes:createNote("C3", 1, startTime + 1)
+
+   notes:createNote("A2", 1, startTime + 3)
+   notes:createNote("C3", 1, startTime + 3)
+
+   notes:createNote("F1", 1, startTime + 4)
+
+   notes:createNote("F1", 1, startTime + 6)
+   notes:createNote("E4", 1, startTime + 6)
+
+   notes:createNote("F2", 1, startTime + 7)
+   notes:createNote("A2", 1, startTime + 7)
+   notes:createNote("D4", 1, startTime + 7)
 
 end
 
