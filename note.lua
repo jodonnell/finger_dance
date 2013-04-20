@@ -7,8 +7,8 @@ function Note:init(note, length, time, octave, letter)
    self.octave = octave
    self.letter = letter
    self.length = length * 800
-   self.time = time * 1000 / 6
-   self.shouldPlay = true
+   self.time = time * 1000 / 4
+   self.shouldPlay = false
    self.circle = nil
 
    local function playNote(event)
@@ -39,8 +39,10 @@ function Note:yOnOctave()
       return display.contentHeight - 50
    elseif self.octave == '2' then
       return display.contentHeight - 100
-   elseif self.octave == '3' then
+   elseif self.octave == '3' and self.letter == 'G' then
       return 100
+   elseif self.octave == '3' and self.letter ~= 'G' then
+      return display.contentHeight - 100
    elseif self.octave == '4' then
       return display.contentHeight - 300
    end
